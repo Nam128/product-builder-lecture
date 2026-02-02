@@ -125,6 +125,37 @@ h1 {
     margin-bottom: 10px;
 }
 
+.secondary-btn {
+    background-color: transparent;
+    color: var(--button-bg-color);
+    border: 1px solid var(--button-bg-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.secondary-btn:hover {
+    background-color: var(--button-bg-color);
+    color: white;
+}
+
+#webcam-container {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#webcam-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
 #image-preview {
     width: 100%;
     height: 100%;
