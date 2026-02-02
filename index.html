@@ -3,16 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Generator</title>
+    <title>테토 에겐 테스트</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <button id="theme-toggle-btn">다크 모드</button>
     <div class="container">
-        <h1>Lotto</h1>
-        <p class="subtitle">행운의 번호를 확인해보세요.</p>
-        <div class="lotto-numbers" id="lotto-numbers"></div>
-        <button id="generate-btn">번호 생성하기</button>
+        <h1>테토 에겐 테스트</h1>
+        <p class="subtitle">AI가 분석하는 당신의 이미지는?</p>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="image-upload" accept="image/*" hidden>
+            <div class="upload-placeholder" id="upload-placeholder">
+                <div class="upload-icon">📸</div>
+                <p>사진을 올려놓거나 눌러서 업로드하세요</p>
+            </div>
+            <img id="image-preview" src="#" alt="Preview" style="display: none;">
+            <div id="loading-spinner" class="spinner" style="display: none;"></div>
+        </div>
+
+        <div id="result-container" class="result-container" style="display: none;">
+            <p class="result-message"></p>
+            <div id="label-container"></div>
+        </div>
+        
+        <button id="predict-btn" style="display: none;">분석하기</button>
     </div>
 
     <div class="container contact-container">
@@ -45,6 +60,8 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
