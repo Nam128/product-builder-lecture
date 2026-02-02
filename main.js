@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const lottoNumbersContainer = document.getElementById('lotto-numbers');
     const generateBtn = document.getElementById('generate-btn');
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const body = document.body;
+
+    // Load theme from local storage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+    }
 
     generateBtn.addEventListener('click', () => {
         lottoNumbersContainer.innerHTML = ''; // Clear previous numbers
@@ -12,6 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
             numberElement.textContent = number;
             lottoNumbersContainer.appendChild(numberElement);
         });
+    });
+
+    themeToggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
     });
 
     function generateUniqueNumbers(min, max, count) {
