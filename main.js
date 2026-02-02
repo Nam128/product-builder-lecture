@@ -249,16 +249,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Result Customization
+    const RESULT_INFO = {
+        "Class 1": {
+            label: "테토(Teeto)",
+            message: "강렬하고 카리스마 넘치는 인상이시네요! 테토처럼 리더십이 느껴지는 관상입니다. 💪",
+            color: "#3b82f6" // Blue-ish
+        },
+        "Class 2": {
+            label: "에겐(Egen)",
+            message: "부드럽고 섬세한 인상이시네요! 에겐처럼 다정함이 느껴지는 관상입니다. ✨",
+            color: "#ec4899" // Pink-ish
+        }
+    };
+
     async function predict(inputElement) {
         const prediction = await model.predict(inputElement);
         prediction.sort((a, b) => b.probability - a.probability);
 
         const bestPrediction = prediction[0];
         const probability = (bestPrediction.probability * 100).toFixed(1);
+        
+        const info = RESULT_INFO[bestPrediction.className] || {
+            label: bestPrediction.className,
+            message: "분석 결과가 나왔습니다.",
+            color: "var(--button-bg-color)"
+        };
 
-        resultMessage.textContent = isWebcamMode 
-            ? `실시간 분석: ${bestPrediction.className} (${probability}%)`
-            : `당신의 이미지는 ${probability}% 확률로 "${bestPrediction.className}"에 가깝습니다.`;
+        if (isWebcamMode) {
+             resultMessage.innerHTML = `실시간 분석: <span style="color:${info.color}">${info.label}</span> (${probability}%)<br><span style="font-size:0.8em; font-weight:400;">${info.message}</span>`;
+        } else {
+             resultMessage.innerHTML = `당신은 <span style="color:${info.color}">${probability}%</span> 확률로 <br><span style="font-size:1.4em; color:${info.color}">"${info.label}"</span> 입니다.<br><div style="margin-top:10px; font-size:0.9em; color:var(--sub-text-color);">${info.message}</div>`;
+        }
         
         resultContainer.style.display = 'block';
         
@@ -275,27 +297,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createBarElement(pred, index) {
+        const info = RESULT_INFO[pred.className] || { label: pred.className, color: 'var(--sub-text-color)' };
         const barContainer = document.createElement('div');
         barContainer.className = 'bar-container';
         barContainer.innerHTML = `
-            <div class="bar-label">${pred.className}</div>
+            <div class="bar-label">${info.label}</div>
             <div class="bar-bg"><div class="bar-fill" style="width: ${pred.probability * 100}%"></div></div>
             <div class="bar-percent">${(pred.probability * 100).toFixed(1)}%</div>
         `;
         const barFill = barContainer.querySelector('.bar-fill');
-        barFill.style.backgroundColor = index === 0 ? 'var(--button-bg-color)' : 'var(--sub-text-color)';
+        // If it's the top prediction, use its specific color, otherwise gray or specific color?
+        // Let's use specific color for the bar itself if it's the dominant one, or just keep the info color
+        if (index === 0) {
+            barFill.style.backgroundColor = info.color;
+        } else {
+            barFill.style.backgroundColor = 'var(--sub-text-color)';
+        }
         return barContainer;
     }
 
     function updateBarElement(container, pred, index) {
+        const info = RESULT_INFO[pred.className] || { label: pred.className, color: 'var(--button-bg-color)' };
+        
         const barFill = container.querySelector('.bar-fill');
         const barPercent = container.querySelector('.bar-percent');
         const barLabel = container.querySelector('.bar-label');
         
-        barLabel.textContent = pred.className;
+        barLabel.textContent = info.label;
         barFill.style.width = (pred.probability * 100) + "%";
         barPercent.textContent = (pred.probability * 100).toFixed(1) + "%";
-        barFill.style.backgroundColor = index === 0 ? 'var(--button-bg-color)' : 'var(--sub-text-color)';
+        
+        if (index === 0) {
+            barFill.style.backgroundColor = info.color;
+        } else {
+            barFill.style.backgroundColor = 'var(--sub-text-color)';
+        }
     }
 
     // Form submission feedback
