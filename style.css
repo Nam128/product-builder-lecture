@@ -91,6 +91,105 @@ h1 {
     background-color: rgba(128, 128, 128, 0.1);
 }
 
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--sub-text-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.tab-btn.active {
+    color: var(--text-color);
+    border-bottom-color: var(--button-bg-color);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Lotto Styles */
+.lotto-numbers {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    min-height: 70px;
+    flex-wrap: wrap;
+}
+
+.lotto-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-image: var(--lotto-gradient-1);
+    color: #333; 
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.lotto-number:nth-child(2n) { background-image: var(--lotto-gradient-2); }
+.lotto-number:nth-child(3n) { background-image: var(--lotto-gradient-3); }
+
+#generate-btn {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 18px 40px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 980px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+}
+
+#generate-btn:hover {
+    background-color: var(--button-hover-bg-color);
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 113, 227, 0.4);
+}
+
+#generate-btn:active {
+    transform: scale(0.98);
+}
+
 /* Upload Area */
 .upload-area {
     width: 100%;

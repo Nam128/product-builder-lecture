@@ -3,33 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>테토 에겐 테스트</title>
+    <title>AI Playground</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <button id="theme-toggle-btn">다크 모드</button>
     <div class="container">
-        <h1>테토 에겐 테스트</h1>
-        <p class="subtitle">AI가 분석하는 당신의 이미지는?</p>
-        
-        <div class="upload-area" id="upload-area">
-            <input type="file" id="image-upload" accept="image/*" hidden>
-            <div class="upload-placeholder" id="upload-placeholder">
-                <div class="upload-icon">📸</div>
-                <p>사진을 올려놓거나 눌러서 업로드하세요</p>
-                <button type="button" id="webcam-btn" class="secondary-btn">웹캠 사용하기</button>
-            </div>
-            <img id="image-preview" src="#" alt="Preview" style="display: none;">
-            <div id="webcam-container"></div>
-            <div id="loading-spinner" class="spinner" style="display: none;"></div>
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="lotto">로또 번호 생성</button>
+            <button class="tab-btn" data-tab="teeto">테토 에겐 테스트</button>
         </div>
 
-        <div id="result-container" class="result-container" style="display: none;">
-            <p class="result-message"></p>
-            <div id="label-container"></div>
+        <!-- Lotto Tab Content -->
+        <div id="lotto-tab" class="tab-content active">
+            <h1>Lotto</h1>
+            <p class="subtitle">행운의 번호를 확인해보세요.</p>
+            <div class="lotto-numbers" id="lotto-numbers"></div>
+            <button id="generate-btn">번호 생성하기</button>
         </div>
-        
-        <button id="predict-btn" style="display: none;">분석하기</button>
+
+        <!-- Teeto Tab Content -->
+        <div id="teeto-tab" class="tab-content">
+            <h1>테토 에겐 테스트</h1>
+            <p class="subtitle">AI가 분석하는 당신의 이미지는?</p>
+            
+            <div class="upload-area" id="upload-area">
+                <input type="file" id="image-upload" accept="image/*" hidden>
+                <div class="upload-placeholder" id="upload-placeholder">
+                    <div class="upload-icon">📸</div>
+                    <p>사진을 올려놓거나 눌러서 업로드하세요</p>
+                    <button type="button" id="webcam-btn" class="secondary-btn">웹캠 사용하기</button>
+                </div>
+                <img id="image-preview" src="#" alt="Preview" style="display: none;">
+                <div id="webcam-container"></div>
+                <div id="loading-spinner" class="spinner" style="display: none;"></div>
+            </div>
+
+            <div id="result-container" class="result-container" style="display: none;">
+                <p class="result-message"></p>
+                <div id="label-container"></div>
+            </div>
+            
+            <button id="predict-btn" style="display: none;">분석하기</button>
+        </div>
     </div>
 
     <div class="container contact-container">
