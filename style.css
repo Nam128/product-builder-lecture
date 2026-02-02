@@ -1,24 +1,32 @@
 :root {
-    --bg-color: #f0f2f5;
-    --container-bg-color: #fff;
-    --text-color: #333;
-    --button-bg-color: #007bff;
-    --button-hover-bg-color: #0056b3;
-    --lotto-number-bg-color: #4CAF50;
-    --lotto-number-text-color: #fff;
+    --bg-color: #fbfbfd;
+    --container-bg-color: rgba(255, 255, 255, 0.8);
+    --text-color: #1d1d1f;
+    --sub-text-color: #86868b;
+    --button-bg-color: #0071e3;
+    --button-hover-bg-color: #0077ed;
+    --button-text-color: #fff;
+    --lotto-gradient-1: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    --lotto-gradient-2: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    --lotto-gradient-3: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 body.dark-mode {
-    --bg-color: #121212;
-    --container-bg-color: #1e1e1e;
-    --text-color: #e0e0e0;
-    --button-bg-color: #0056b3;
-    --button-hover-bg-color: #003d82;
-    --lotto-number-bg-color: #388E3C;
+    --bg-color: #000000;
+    --container-bg-color: rgba(28, 28, 30, 0.8);
+    --text-color: #f5f5f7;
+    --sub-text-color: #a1a1a6;
+    --button-bg-color: #2997ff;
+    --button-hover-bg-color: #0071e3;
+    --button-text-color: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
@@ -26,55 +34,119 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .container {
     text-align: center;
     background-color: var(--container-bg-color);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 60px 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px var(--shadow-color);
+    border: var(--glass-border);
+    transition: all 0.5s ease;
+    max-width: 600px;
+    width: 90%;
 }
 
 h1 {
-    color: var(--text-color);
-    margin-bottom: 30px;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #0071e3, #9b59b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.subtitle {
+    font-size: 19px;
+    color: var(--sub-text-color);
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+/* Theme Toggle Button (Minimalist) */
+#theme-toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    color: var(--button-bg-color);
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+#theme-toggle-btn:hover {
+    background-color: rgba(128, 128, 128, 0.1);
 }
 
 .lotto-numbers {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
+    gap: 15px;
+    margin-bottom: 50px;
+    min-height: 70px; /* Preserve space */
+    flex-wrap: wrap;
 }
 
 .lotto-number {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background-color: var(--lotto-number-bg-color);
-    color: var(--lotto-number-text-color);
+    /* Default gradient, can be varied via JS */
+    background-image: var(--lotto-gradient-1);
+    color: #333; 
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
+
+@keyframes popIn {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Different colors for balls based on ranges (optional refinement) */
+.lotto-number:nth-child(2n) { background-image: var(--lotto-gradient-2); }
+.lotto-number:nth-child(3n) { background-image: var(--lotto-gradient-3); }
+
 
 #generate-btn {
     background-color: var(--button-bg-color);
-    color: #fff;
+    color: var(--button-text-color);
     border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 8px;
+    padding: 18px 40px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 980px; /* Pill shape */
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
 }
 
 #generate-btn:hover {
     background-color: var(--button-hover-bg-color);
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 113, 227, 0.4);
+}
+
+#generate-btn:active {
+    transform: scale(0.98);
 }
