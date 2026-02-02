@@ -205,3 +205,9 @@ h1 {
 #submit-btn:hover {
     background-color: var(--button-hover-bg-color);
 }
+
+/* Disqus Container */
+.disqus-container {
+    padding: 30px;
+    text-align: initial; /* Reset center alignment for comments */
+}
