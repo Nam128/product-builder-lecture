@@ -66,4 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return Array.from(numbers);
     }
+
+    // Form submission feedback
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', () => {
+            submitBtn.disabled = true;
+            submitBtn.textContent = '보내는 중...';
+        });
+    }
 });
