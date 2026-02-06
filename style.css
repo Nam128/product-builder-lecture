@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap");
+
 :root {
     --bg-color: #fbfbfd;
     --container-bg-color: rgba(255, 255, 255, 0.8);
@@ -26,7 +28,7 @@ body.dark-mode {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "IBM Plex Sans KR", "Nunito", sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
@@ -34,8 +36,114 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    padding: 60px 0;
+    padding: 120px 0 80px;
     transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(0, 113, 227, 0.15), transparent 50%),
+        radial-gradient(circle at 80% 10%, rgba(255, 167, 38, 0.15), transparent 45%),
+        radial-gradient(circle at 70% 70%, rgba(90, 200, 250, 0.2), transparent 55%);
+    z-index: -1;
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 20;
+}
+
+body.dark-mode .site-header {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.logo-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0071e3, #ffa726);
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.site-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.site-nav a:hover {
+    opacity: 1;
+}
+
+.hero {
+    width: min(1000px, 90%);
+    margin: 0 auto 40px;
+    padding: 60px 50px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, rgba(0, 113, 227, 0.12), rgba(255, 167, 38, 0.12));
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .hero {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: var(--sub-text-color);
+    line-height: 1.6;
+}
+
+.hero-tags {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hero-tags span {
+    background-color: rgba(0, 113, 227, 0.1);
+    color: var(--text-color);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .container {
@@ -64,6 +172,76 @@ h1 {
     display: inline-block;
 }
 
+.content-section {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.content-section h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.detail-card {
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 20px;
+    border-radius: 16px;
+    margin: 20px 0 30px;
+}
+
+body.dark-mode .detail-card {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.detail-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.detail-card p {
+    margin: 0 0 12px;
+    color: var(--sub-text-color);
+    line-height: 1.6;
+}
+
+.principles {
+    text-align: left;
+    margin: 16px 0;
+    padding-left: 20px;
+    color: var(--sub-text-color);
+    line-height: 1.6;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.faq-item {
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 16px;
+    border-radius: 14px;
+    text-align: left;
+}
+
+body.dark-mode .faq-item {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.faq-item h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.faq-item p {
+    font-size: 14px;
+    color: var(--sub-text-color);
+    line-height: 1.5;
+}
+
 .subtitle {
     font-size: 19px;
     color: var(--sub-text-color);
@@ -73,9 +251,6 @@ h1 {
 
 /* Theme Toggle Button (Minimalist) */
 #theme-toggle-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
     background: transparent;
     color: var(--button-bg-color);
     border: none;
@@ -404,4 +579,69 @@ h1 {
 .disqus-container {
     padding: 30px;
     text-align: initial; /* Reset center alignment for comments */
+}
+
+.site-footer {
+    width: min(1000px, 90%);
+    margin: 20px auto 0;
+    text-align: center;
+    color: var(--sub-text-color);
+    font-size: 14px;
+}
+
+.footer-links {
+    margin-top: 8px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: var(--sub-text-color);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--text-color);
+}
+
+.error-actions {
+    margin-top: 24px;
+}
+
+.primary-link {
+    display: inline-block;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    padding: 12px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+}
+
+.primary-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 113, 227, 0.4);
+}
+
+@media (max-width: 860px) {
+    .site-header {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .site-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 40px 24px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
 }

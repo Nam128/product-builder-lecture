@@ -4,14 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6539462798749034">
-    <title>AI Playground</title>
+    <meta name="description" content="AI Playground는 로또 번호 추천과 이미지 기반 테스트를 안전하고 투명하게 제공하는 실험 공간입니다. 작동 원리, 한계, 개인정보 처리 방법을 공개합니다.">
+    <title>AI Playground | 실험적 AI 도구와 투명한 안내</title>
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6539462798749034"
      crossorigin="anonymous"></script>
 </head>
 <body>
-    <button id="theme-toggle-btn">다크 모드</button>
+    <header class="site-header">
+        <div class="site-title">
+            <span class="logo-dot"></span>
+            <span>AI Playground</span>
+        </div>
+        <nav class="site-nav">
+            <a href="#features">도구</a>
+            <a href="#quality">운영 원칙</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">문의</a>
+            <a href="about.html">소개</a>
+            <a href="privacy.html">개인정보</a>
+            <a href="terms.html">이용약관</a>
+        </nav>
+        <button id="theme-toggle-btn">다크 모드</button>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>실험적 AI 도구를 투명하게 운영합니다.</h1>
+            <p class="hero-subtitle">
+                AI Playground는 간단한 도구를 제공하는 대신, 작동 원리와 한계를 명확하게 공개합니다.
+                사용자가 무엇을 기대해야 하는지, 어떤 데이터가 처리되는지, 어떤 제약이 있는지 숨기지 않습니다.
+            </p>
+            <div class="hero-tags">
+                <span>투명한 안내</span>
+                <span>안전한 사용</span>
+                <span>지속적 개선</span>
+            </div>
+        </div>
+    </section>
+
     <div class="container">
+        <section id="features" class="content-section">
+            <h2>제공하는 도구</h2>
+            <p class="subtitle">
+                아래 도구는 오락 목적의 실험 콘텐츠입니다. 결과는 참고용이며, 의사결정에 사용하지 마세요.
+            </p>
+        </section>
+
         <!-- Tab Navigation -->
         <div class="tabs">
             <button class="tab-btn active" data-tab="lotto">로또 번호 생성</button>
@@ -22,6 +61,17 @@
         <div id="lotto-tab" class="tab-content active">
             <h1>Lotto</h1>
             <p class="subtitle">행운의 번호를 확인해보세요.</p>
+            <div class="detail-card">
+                <h3>작동 원리</h3>
+                <p>
+                    1부터 45까지의 숫자 중 6개를 중복 없이 무작위로 선택합니다. 통계적 예측이 아니라
+                    난수 기반의 조합이며, 결과는 매번 달라질 수 있습니다.
+                </p>
+                <h3>한계와 주의사항</h3>
+                <p>
+                    이 도구는 당첨 확률을 높여주지 않습니다. 재미를 위한 기능이며, 책임 있는 소비를 권장합니다.
+                </p>
+            </div>
             <div class="lotto-numbers" id="lotto-numbers"></div>
             <button id="generate-btn">번호 생성하기</button>
         </div>
@@ -30,6 +80,17 @@
         <div id="teeto-tab" class="tab-content">
             <h1>테토 에겐 테스트</h1>
             <p class="subtitle">AI가 분석하는 당신의 이미지는?</p>
+            <div class="detail-card">
+                <h3>작동 원리</h3>
+                <p>
+                    사용자의 이미지는 브라우저 안에서만 처리되며, 학습된 분류 모델을 통해
+                    간단한 인상 분류를 수행합니다. 별도의 서버로 이미지를 업로드하지 않도록 설계했습니다.
+                </p>
+                <h3>한계와 주의사항</h3>
+                <p>
+                    이 테스트는 오락용이며 과학적 진단이나 평가가 아닙니다. 결과는 참고용으로만 사용하세요.
+                </p>
+            </div>
             
             <div class="upload-area" id="upload-area">
                 <input type="file" id="image-upload" accept="image/*" hidden>
@@ -52,9 +113,50 @@
         </div>
     </div>
 
-    <div class="container contact-container">
-        <h2>제휴 문의</h2>
-        <p class="subtitle">함께 성장할 파트너를 기다립니다.</p>
+    <div class="container" id="quality">
+        <section class="content-section">
+            <h2>운영 원칙과 품질 기준</h2>
+            <p>
+                우리는 사용자에게 명확한 가치를 제공하는 것을 최우선으로 합니다. 기능 설명, 데이터 처리 방식,
+                제한 사항을 한 곳에서 확인할 수 있도록 공개하며, 사용자 혼란을 줄이는 데 집중합니다.
+            </p>
+            <ul class="principles">
+                <li>콘텐츠의 목적과 범위를 분명히 알립니다.</li>
+                <li>결과의 한계와 오해 소지를 명확히 적습니다.</li>
+                <li>사용자 문의에 응답할 수 있는 연락 채널을 유지합니다.</li>
+                <li>불필요한 리다이렉트나 과도한 광고 배치를 피합니다.</li>
+                <li>콘텐츠가 없는 페이지에는 광고를 배치하지 않습니다.</li>
+                <li>키워드만을 위한 페이지나 중복 콘텐츠를 만들지 않습니다.</li>
+            </ul>
+            <p>
+                장기적으로는 사용자 피드백과 데이터를 바탕으로 기능을 개선하고, 더 유용한 콘텐츠로 확장할 계획입니다.
+            </p>
+        </section>
+    </div>
+
+    <div class="container" id="faq">
+        <section class="content-section">
+            <h2>자주 묻는 질문</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>이미지가 서버로 전송되나요?</h3>
+                    <p>현재 구현은 브라우저 내에서만 처리되도록 구성되어 있습니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>결과가 정확한가요?</h3>
+                    <p>오락용 테스트이며, 정확도나 과학적 근거를 보장하지 않습니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>콘텐츠 개선 제안은 어디로 하나요?</h3>
+                    <p>아래 문의 폼으로 의견을 보내주시면 검토 후 반영하겠습니다.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="container contact-container" id="contact">
+        <h2>문의하기</h2>
+        <p class="subtitle">서비스 개선 제안이나 협업 문의를 기다립니다.</p>
         <form action="https://formspree.io/f/meezldky" method="POST" id="contact-form">
             <div class="form-group">
                 <input type="text" name="name" placeholder="성함 / 업체명" required>
@@ -85,5 +187,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
+
+    <footer class="site-footer">
+        <p>© 2026 AI Playground. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="about.html">소개</a>
+            <a href="privacy.html">개인정보 처리방침</a>
+            <a href="terms.html">이용약관</a>
+        </div>
+    </footer>
 </body>
 </html>
